@@ -81,7 +81,7 @@ export default function ProductPage() {
 					Découvrez toutes les applications Loinstante
 				</h1>
 				<p
-					className="text-lg md:text-xl text-gray-600 mb-8 font-medium"
+					className="text-lg md:text-xl text-foreground mb-8 font-medium"
 					style={{ fontFamily: "Inter, Geist, sans-serif" }}
 				>
 					Des outils libres, modernes et souverains pour écrire, collaborer,

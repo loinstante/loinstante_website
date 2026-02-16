@@ -68,16 +68,13 @@ export default function ProductPage() {
 		<div className="min-h-screen bg-[#f9fafb] font-sans py-12">
 			<div className="max-w-4xl mx-auto text-center mb-12 px-4">
 				<h1
-					className="text-4xl md:text-5xl font-extrabold mb-4 leading-tight"
-					style={{
-						fontFamily: "Inter, Geist, sans-serif",
-						color: "#111827",
-					}}
+					className="text-4xl md:text-5xl font-extrabold mb-4 leading-tight text-primary"
+					style={{ fontFamily: "Inter, Geist, sans-serif" }}
 				>
 					Découvrez toutes les applications Loinstante
 				</h1>
 				<p
-					className="text-lg md:text-xl text-gray-600 mb-8 font-medium"
+					className="text-lg md:text-xl text-black mb-8 font-medium"
 					style={{ fontFamily: "Inter, Geist, sans-serif" }}
 				>
 					Des outils libres, modernes et souverains pour écrire, collaborer,
@@ -87,7 +84,7 @@ export default function ProductPage() {
 			</div>
 			{/* Section Création */}
 			<section className="max-w-6xl mx-auto mb-16 px-4">
-				<h2 className="text-2xl md:text-3xl font-bold mb-8 text-[#3b82f6] text-center">
+				<h2 className="text-2xl md:text-3xl font-bold mb-8 text-primary text-center">
 					Loinstante Création
 				</h2>
 				<div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -98,7 +95,7 @@ export default function ProductPage() {
 			</section>
 			{/* Section Office */}
 			<section className="max-w-6xl mx-auto mb-16 px-4">
-				<h2 className="text-2xl md:text-3xl font-bold mb-8 text-[#3b82f6] text-center">
+				<h2 className="text-2xl md:text-3xl font-bold mb-8 text-primary text-center">
 					Loinstante Office
 				</h2>
 				<div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -142,15 +139,12 @@ export default function ProductPage() {
 							</svg>
 						</div>
 						<h2
-							className="text-3xl md:text-4xl font-bold text-center mb-4"
-							style={{
-								fontFamily: "Inter, Geist, sans-serif",
-								color: "#111827",
-							}}
+							className="text-3xl md:text-4xl font-bold text-center mb-4 text-primary"
+							style={{ fontFamily: "Inter, Geist, sans-serif" }}
 						>
 							Reprenez le contrôle de vos données
 						</h2>
-						<p className="text-lg text-gray-700 text-center max-w-2xl mb-8">
+						<p className="text-lg text-black text-center max-w-2xl mb-8">
 							Loinstante est conçu pour être transparent. Contrairement aux
 							solutions traditionnelles, nous ne stockons rien par défaut. Vous
 							restez l'unique propriétaire de votre travail.
@@ -165,7 +159,7 @@ export default function ProductPage() {
 							<h3 className="text-xl font-bold mb-2 text-[#3b82f6]">
 								Stockage Flexible
 							</h3>
-							<p className="text-gray-600 text-center">
+							<p className="text-black text-center">
 								Vous pouvez choisir d'utiliser Loinstante Drive pour synchroniser
 								vos documents dans le cloud, mais ce n'est jamais imposé. Votre
 								liberté, votre choix.
@@ -175,7 +169,7 @@ export default function ProductPage() {
 							<h3 className="text-xl font-bold mb-2 text-[#3b82f6]">
 								Liberté Totale
 							</h3>
-							<p className="text-gray-600 text-center">
+							<p className="text-black text-center">
 								Tous les logiciels Loinstante fonctionnent localement ou peuvent
 								être auto-hébergés sur vos propres serveurs. Le code est open
 								source, la souveraineté est entre vos mains.

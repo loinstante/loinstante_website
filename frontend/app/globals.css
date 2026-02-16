@@ -3,8 +3,12 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
-  --primary: #54A8E8;
-  --secondary: #E8B254;
+  --primary: #3b82f6;
+  --secondary: #f59e0b;
+  --heading-dark: #111827;
+  --text-muted: #374151;
+  --text-placeholder: #9CA3AF;
+  --page-hero-bg: #f9fafb;
 }
 
 @theme inline {
@@ -12,19 +16,76 @@
   --color-foreground: var(--foreground);
   --color-primary: var(--primary);
   --color-secondary: var(--secondary);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-geist-sans, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial);
+  --font-mono: var(--font-geist-mono, ui-monospace, SFMono-Regular, Menlo, Monaco, "Roboto Mono", monospace);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
-    --foreground: #ededed;
+    --foreground: #e5e7eb;
+    --page-hero-bg: #18181b; /* match dark mode, or set to #f9fafb for always light */
   }
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans), sans-serif;
+}
+
+/* Theme utility classes */
+.brand-title {
+  color: var(--heading-dark) !important;
+  font-family: var(--font-sans), sans-serif;
+  line-height: 1.05;
+  opacity: 1 !important;
+}
+
+.brand-title * {
+  color: inherit !important;
+  opacity: 1 !important;
+}
+
+.brand-subtitle {
+  color: var(--text-muted) !important;
+  opacity: 1 !important;
+  font-family: var(--font-sans), sans-serif;
+}
+
+.brand-accent {
+  color: var(--color-primary) !important;
+}
+
+/* Text color utilities */
+.text-primary {
+  color: var(--color-primary) !important;
+}
+
+.text-foreground {
+  color: var(--color-foreground) !important;
+}
+
+.text-heading-dark {
+  color: var(--heading-dark) !important;
+}
+
+.text-text-muted {
+  color: var(--text-muted) !important;
+}
+
+.bg-page-hero-bg {
+  background-color: var(--page-hero-bg) !important;
+}
+
+/* Form elements */
+input,
+textarea,
+select {
+  color: var(--color-foreground) !important;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: var(--text-placeholder) !important;
 }
