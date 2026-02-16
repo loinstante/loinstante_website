@@ -1,23 +1,4 @@
-import Image from "next/image";
 import PresentationBox from "../components/PresentationBox";
-
-function Header() {
-  return (
-    <header className="w-full bg-white shadow-sm py-4 px-8 flex items-center justify-between">
-      <div className="flex items-center gap-2">
-        <Image src="/globe.svg" alt="loinstante logo" width={40} height={40} />
-        <span className="text-2xl font-bold tracking-tight" style={{ fontFamily: 'Inter, Geist, sans-serif', color: '#3b82f6' }}>loinstante</span>
-      </div>
-      <nav className="hidden md:flex gap-8 text-gray-700 font-medium">
-        <a href="#" className="hover:text-[#3b82f6]">Produits</a>
-        <a href="#" className="hover:text-[#3b82f6]">Ressources</a>
-        <a href="#" className="hover:text-[#3b82f6]">Tarifs</a>
-        <a href="#" className="hover:text-[#3b82f6]">Support</a>
-      </nav>
-      <a href="#" className="px-5 py-2 rounded-full font-semibold transition" style={{ background: '#f59e0b', color: '#fff' }}>Se connecter</a>
-    </header>
-  );
-}
 
 function HeroSection() {
   return (
@@ -84,7 +65,7 @@ function Footer() {
 export default function Home() {
   return (
     <div className="min-h-screen bg-[#f9fafb] font-sans">
-      <Header />
+      {/* Remove <Header /> here, it's now global in layout */}
       <HeroSection />
       <ProductsGrid />
       <OpenSourceBanner />
