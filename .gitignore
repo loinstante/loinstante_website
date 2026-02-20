@@ -35,3 +35,27 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Rust
+# Ignore compiled artifacts
+/target/
+/**/target/
+
+# Backend env and runtime files
+/backend/.env
+
+# VSCode
+.vscode/
+
+# Editor swap and temp files
+*~
+*.swp
+*.swo
+
+# Log files
+*.log
+
+# Docker
+.env.*.local
+.env.local
+.docker-compose.override.yml

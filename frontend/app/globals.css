@@ -9,6 +9,7 @@
   --text-muted: #374151;
   --text-placeholder: #9CA3AF;
   --page-hero-bg: #f9fafb;
+  --form-text: #1f2937; /* gris foncé pour les textes des formulaires */
 }
 
 @theme inline {
@@ -24,7 +25,8 @@
   :root {
     --background: #0a0a0a;
     --foreground: #e5e7eb;
-    --page-hero-bg: #18181b; /* match dark mode, or set to #f9fafb for always light */
+    /* Keep page hero background light to match the site's DA */
+    --page-hero-bg: #f9fafb;
   }
 }
 
@@ -72,6 +74,10 @@ body {
 
 .text-text-muted {
   color: var(--text-muted) !important;
+}
+
+.text-form {
+  color: var(--form-text) !important;
 }
 
 .bg-page-hero-bg {

@@ -83,30 +83,30 @@ export default function SupportPage() {
       <section className="max-w-xl mx-auto px-4 py-8">
         <form className="bg-white rounded-3xl shadow-xl p-8 flex flex-col gap-6 text-black" onSubmit={handleSubmit}>
           <div className="flex flex-col gap-2 text-left">
-            <label htmlFor="name" className="font-semibold text-black">Nom</label>
+            <label htmlFor="name" className="font-semibold text-form">Nom</label>
             <input
-              className="border border-gray-200 rounded-lg px-4 py-2 focus:outline-none placeholder-gray-400 text-black"
+              className="border border-gray-200 rounded-lg px-4 py-2 focus:outline-none placeholder-gray-400 text-form"
               type="text" name="name" id="name" autoComplete="name" value={form.name} onChange={handleChange} required
             />
           </div>
           <div className="flex flex-col gap-2 text-left">
-            <label htmlFor="email" className="font-semibold text-black">Email</label>
+            <label htmlFor="email" className="font-semibold text-form">Email</label>
             <input
-              className="border border-gray-200 rounded-lg px-4 py-2 focus:outline-none placeholder-gray-400 text-black"
+              className="border border-gray-200 rounded-lg px-4 py-2 focus:outline-none placeholder-gray-400 text-form"
               type="email" name="email" id="email" autoComplete="email" value={form.email} onChange={handleChange} required
             />
           </div>
           <div className="flex flex-col gap-2 text-left">
-            <label htmlFor="message" className="font-semibold text-black">Message</label>
+            <label htmlFor="message" className="font-semibold text-form">Message</label>
             <textarea
-              className="border border-gray-200 rounded-lg px-4 py-2 min-h-30 focus:outline-none placeholder-gray-400 text-black"
+              className="border border-gray-200 rounded-lg px-4 py-2 min-h-30 focus:outline-none placeholder-gray-400 text-form"
               name="message" id="message" value={form.message} onChange={handleChange} required
             />
           </div>
           <div className="flex flex-col gap-2 text-left">
-            <label htmlFor="file" className="font-semibold text-black">Pièce jointe (optionnel, max 8 Mo)</label>
+            <label htmlFor="file" className="font-semibold text-form">Pièce jointe (optionnel, max 8 Mo)</label>
             <input
-              className="border border-gray-200 rounded-lg px-4 py-2 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold text-black"
+              className="border border-gray-200 rounded-lg px-4 py-2 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold text-form"
               type="file" name="file" id="file" accept={ALLOWED_TYPES.join(",")} onChange={handleChange}
             />
             {fileName && <span className="text-xs text-gray-500">{fileName}</span>}

@@ -1,0 +1,6 @@
+# Ignore env file with secrets
+.env
+
+# Ignore Postgres data (if mounted locally)
+db_data/
+
