@@ -22,6 +22,7 @@ mod utils;
 
 use handlers::auth_handler::{login_handler, me_handler, logout_handler};
 use handlers::profile_handler::{get_profile_handler, update_profile_handler, upload_profile_picture_handler};
+use handlers::register_handler::{register_handler, check_pseudo_handler};
 use handlers::support_handler::{support_handler, new_rate_limit_state};
 
 #[derive(Clone)]
@@ -88,6 +89,8 @@ async fn main() -> anyhow::Result<()> {
     // Build router
     let app = Router::new()
         .route("/api/login", post(login_handler))
+        .route("/api/register", post(register_handler))
+        .route("/api/check-pseudo", get(check_pseudo_handler))
         .route("/api/me", get(me_handler))
         .route("/api/logout", post(logout_handler))
         .route("/api/profile", get(get_profile_handler).put(update_profile_handler))

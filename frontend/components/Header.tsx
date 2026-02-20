@@ -82,9 +82,14 @@ export default function Header() {
               </button>
             </div>
           ) : (
-            <Link href="/login" className={loginButtonClass}>
-              Se connecter
-            </Link>
+            <div className="flex items-center gap-3">
+              <Link href="/register" className="px-5 py-2 rounded-full font-semibold transition border border-primary text-primary hover:bg-primary/5">
+                S&apos;inscrire
+              </Link>
+              <Link href="/login" className={loginButtonClass}>
+                Se connecter
+              </Link>
+            </div>
           )}
         </div>
       </div>

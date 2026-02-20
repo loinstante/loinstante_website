@@ -6,6 +6,8 @@ use sqlx::PgPool;
 pub trait UserRepository: Send + Sync + 'static {
     async fn find_by_pseudo(&self, pseudo: &str) -> Result<Option<User>, sqlx::Error>;
     async fn find_by_id(&self, id: i32) -> Result<Option<User>, sqlx::Error>;
+    async fn find_by_email(&self, email: &str) -> Result<Option<User>, sqlx::Error>;
+    async fn create_user(&self, name: &str, pseudo: &str, email: &str, password: &str, profile_picture: Option<String>) -> Result<User, sqlx::Error>;
     async fn update_profile(&self, id: i32, payload: &UpdateProfileRequest) -> Result<Option<User>, sqlx::Error>;
     async fn update_profile_picture(&self, id: i32, profile_picture: Option<String>) -> Result<Option<User>, sqlx::Error>;
 }
@@ -39,6 +41,34 @@ impl UserRepository for SqlxUserRepository {
         )
         .bind(id)
         .fetch_optional(&self.pool)
+        .await?;
+
+        Ok(rec)
+    }
+
+    async fn find_by_email(&self, email: &str) -> Result<Option<User>, sqlx::Error> {
+        let rec = sqlx::query_as::<_, User>(
+            "SELECT id, name, pseudo, email, password, profile_picture, created_at FROM public.users WHERE email = $1",
+        )
+        .bind(email)
+        .fetch_optional(&self.pool)
+        .await?;
+
+        Ok(rec)
+    }
+
+    async fn create_user(&self, name: &str, pseudo: &str, email: &str, password: &str, profile_picture: Option<String>) -> Result<User, sqlx::Error> {
+        let rec = sqlx::query_as::<_, User>(
+            "INSERT INTO public.users (name, pseudo, email, password, profile_picture)
+             VALUES ($1, $2, $3, $4, $5)
+             RETURNING id, name, pseudo, email, password, profile_picture, created_at",
+        )
+        .bind(name.trim())
+        .bind(pseudo.trim())
+        .bind(email.trim())
+        .bind(password)
+        .bind(profile_picture)
+        .fetch_one(&self.pool)
         .await?;
 
         Ok(rec)

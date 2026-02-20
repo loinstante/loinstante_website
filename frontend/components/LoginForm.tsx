@@ -69,6 +69,15 @@ export default function LoginForm() {
             >
                 {loading ? 'Connexion en cours...' : 'Se connecter'}
             </button>
+            <p className="text-center text-sm text-gray-500">
+                Pas encore de compte ?{' '}
+                <a
+                    href="/register"
+                    className="text-primary font-semibold hover:underline"
+                >
+                    Créer un compte
+                </a>
+            </p>
         </form>
     );
 }

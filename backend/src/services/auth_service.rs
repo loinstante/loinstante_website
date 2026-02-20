@@ -69,6 +69,14 @@ mod tests {
             Ok(self.user.clone())
         }
 
+        async fn find_by_email(&self, _email: &str) -> Result<Option<User>, sqlx::Error> {
+            Ok(None)
+        }
+
+        async fn create_user(&self, _name: &str, _pseudo: &str, _email: &str, _password: &str, _profile_picture: Option<String>) -> Result<User, sqlx::Error> {
+            Ok(self.user.clone().unwrap())
+        }
+
         async fn update_profile(&self, _id: i32, _payload: &UpdateProfileRequest) -> Result<Option<User>, sqlx::Error> {
             Ok(self.user.clone())
         }

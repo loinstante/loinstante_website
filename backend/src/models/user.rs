@@ -49,6 +49,16 @@ pub struct LoginRequest {
     pub password: String,
 }
 
+#[derive(Debug, Clone, Deserialize)]
+pub struct RegisterRequest {
+    pub name: String,
+    pub pseudo: String,
+    pub email: String,
+    pub password: String,
+    pub confirm_password: String,
+    pub profile_picture: Option<String>,
+}
+
 #[derive(Debug, Clone, Serialize)]
 pub struct LoginResponse {
     pub session_id: String,
