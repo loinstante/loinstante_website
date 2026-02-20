@@ -265,12 +265,19 @@ export default function RegisterForm() {
 
       if (res.status === 201) {
         setSuccess(true);
+        window.scrollTo(0, 0);
         // Auto-login
         const loginResult = await login(pseudo.trim(), password);
         if (loginResult.ok) {
-          setTimeout(() => router.push("/"), 1200);
+          setTimeout(() => {
+            window.scrollTo(0, 0);
+            router.push("/");
+          }, 1200);
         } else {
-          setTimeout(() => router.push("/login"), 1200);
+          setTimeout(() => {
+            window.scrollTo(0, 0);
+            router.push("/login");
+          }, 1200);
         }
       } else {
         const data = await res.json();

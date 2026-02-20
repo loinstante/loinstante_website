@@ -25,6 +25,7 @@ export default function LoginForm() {
         try {
             const result = await login(pseudo, password);
             if (result.ok) {
+                window.scrollTo(0, 0);
                 router.push('/');
             } else {
                 setError(result.error || 'Erreur inconnue');
