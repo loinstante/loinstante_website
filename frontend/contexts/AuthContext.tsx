@@ -4,6 +4,11 @@ import React, { createContext, useContext, useState, useEffect, useCallback } fr
 
 interface User {
   user_id: number;
+  name: string;
+  pseudo: string | null;
+  email: string;
+  profile_picture: string | null;
+  created_at: string;
 }
 
 interface AuthContextType {
@@ -28,14 +33,24 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       if (res.ok) {
         const data = await res.json();
         setIsLoggedIn(true);
-        setUser({ user_id: data.user_id });
+        localStorage.setItem("profile_picture", data.profile_picture ?? "");
+        setUser({
+          user_id: data.user_id,
+          name: data.name,
+          pseudo: data.pseudo ?? null,
+          email: data.email,
+          profile_picture: data.profile_picture ?? null,
+          created_at: data.created_at,
+        });
       } else {
         setIsLoggedIn(false);
         setUser(null);
+        localStorage.removeItem("profile_picture");
       }
     } catch {
       setIsLoggedIn(false);
       setUser(null);
+      localStorage.removeItem("profile_picture");
     }
   }, []);
 
@@ -76,6 +91,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     }
     setIsLoggedIn(false);
     setUser(null);
+    localStorage.removeItem("profile_picture");
   }, []);
 
   return (

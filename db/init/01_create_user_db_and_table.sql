@@ -12,7 +12,7 @@ CREATE TABLE IF NOT EXISTS public.users (
   pseudo VARCHAR(100),
   email VARCHAR(255) NOT NULL,
   password VARCHAR(255) NOT NULL,
-  profile_picture VARCHAR(512),
+  profile_picture TEXT,
   created_at TIMESTAMPTZ NOT NULL DEFAULT now()
 );
 
@@ -21,9 +21,16 @@ CREATE UNIQUE INDEX IF NOT EXISTS users_email_unique ON public.users (email);
 CREATE UNIQUE INDEX IF NOT EXISTS users_pseudo_unique ON public.users (pseudo);
 
 -- Insert a test user (idempotent)
-INSERT INTO public.users (name, pseudo, email, password)
-VALUES ('Test User', 'tester', 'tester@example.com', 'secret')
-ON CONFLICT (email) DO NOTHING;
+INSERT INTO public.users (name, pseudo, email, password, profile_picture)
+VALUES (
+  'Test User',
+  'tester',
+  'tester@example.com',
+  'secret',
+  'https://api.dicebear.com/9.x/pixel-art/png?seed=tester'
+)
+ON CONFLICT (email) DO UPDATE
+SET profile_picture = EXCLUDED.profile_picture;
 
 -- Helpful notes (commented):
 -- - Store passwords hashed (bcrypt/argon2). Do NOT store plaintext passwords in production.

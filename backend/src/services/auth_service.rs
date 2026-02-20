@@ -52,7 +52,7 @@ impl AuthService {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use crate::models::User;
+    use crate::models::{User, UpdateProfileRequest};
     use async_trait::async_trait;
 
     struct MockRepo {
@@ -62,6 +62,18 @@ mod tests {
     #[async_trait]
     impl UserRepository for MockRepo {
         async fn find_by_pseudo(&self, _pseudo: &str) -> Result<Option<User>, sqlx::Error> {
+            Ok(self.user.clone())
+        }
+
+        async fn find_by_id(&self, _id: i32) -> Result<Option<User>, sqlx::Error> {
+            Ok(self.user.clone())
+        }
+
+        async fn update_profile(&self, _id: i32, _payload: &UpdateProfileRequest) -> Result<Option<User>, sqlx::Error> {
+            Ok(self.user.clone())
+        }
+
+        async fn update_profile_picture(&self, _id: i32, _profile_picture: Option<String>) -> Result<Option<User>, sqlx::Error> {
             Ok(self.user.clone())
         }
     }

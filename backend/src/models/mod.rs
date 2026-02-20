@@ -1,4 +1,4 @@
 pub mod user;
 
-pub use user::{User, LoginRequest, LoginResponse, Claims};
+pub use user::{User, PublicUser, UpdateProfileRequest, LoginRequest, LoginResponse, Claims};
 

@@ -12,6 +12,37 @@ pub struct User {
     pub created_at: DateTime<Utc>,
 }
 
+#[derive(Debug, Clone, Serialize)]
+pub struct PublicUser {
+    pub id: i32,
+    pub name: String,
+    pub pseudo: Option<String>,
+    pub email: String,
+    pub profile_picture: Option<String>,
+    pub created_at: DateTime<Utc>,
+}
+
+impl From<User> for PublicUser {
+    fn from(user: User) -> Self {
+        Self {
+            id: user.id,
+            name: user.name,
+            pseudo: user.pseudo,
+            email: user.email,
+            profile_picture: user.profile_picture,
+            created_at: user.created_at,
+        }
+    }
+}
+
+#[derive(Debug, Clone, Deserialize)]
+pub struct UpdateProfileRequest {
+    pub name: String,
+    pub pseudo: Option<String>,
+    pub email: String,
+    pub profile_picture: Option<String>,
+}
+
 #[derive(Debug, Clone, Deserialize)]
 pub struct LoginRequest {
     pub pseudo: String,

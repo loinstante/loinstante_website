@@ -21,6 +21,7 @@ mod errors;
 mod utils;
 
 use handlers::auth_handler::{login_handler, me_handler, logout_handler};
+use handlers::profile_handler::{get_profile_handler, update_profile_handler, upload_profile_picture_handler};
 use handlers::support_handler::{support_handler, new_rate_limit_state};
 
 #[derive(Clone)]
@@ -39,7 +40,7 @@ async fn cors_middleware(req: Request<Body>, next: Next) -> Response {
         let mut res = Response::new(Body::empty());
         let headers = res.headers_mut();
         headers.insert("access-control-allow-origin", HeaderValue::from_static("http://localhost:3000"));
-        headers.insert("access-control-allow-methods", HeaderValue::from_static("GET, POST, OPTIONS"));
+        headers.insert("access-control-allow-methods", HeaderValue::from_static("GET, POST, PUT, OPTIONS"));
         headers.insert("access-control-allow-headers", HeaderValue::from_static("Content-Type"));
         headers.insert("access-control-allow-credentials", HeaderValue::from_static("true"));
         *res.status_mut() = StatusCode::NO_CONTENT;
@@ -73,6 +74,13 @@ async fn main() -> anyhow::Result<()> {
         .await
         .expect("Failed to create pool");
 
+    sqlx::query(
+        "ALTER TABLE public.users ALTER COLUMN profile_picture TYPE TEXT"
+    )
+    .execute(&pool)
+    .await
+    .expect("Failed to ensure users.profile_picture uses TEXT");
+
     let shared_state = AppState { pool: pool.clone(), jwt_secret: jwt_secret.clone(), cookie_secret: cookie_secret.clone(), session_ttl_seconds, is_prod };
 
     let rate_limit_state = new_rate_limit_state();
@@ -82,6 +90,8 @@ async fn main() -> anyhow::Result<()> {
         .route("/api/login", post(login_handler))
         .route("/api/me", get(me_handler))
         .route("/api/logout", post(logout_handler))
+        .route("/api/profile", get(get_profile_handler).put(update_profile_handler))
+        .route("/api/profile/picture", post(upload_profile_picture_handler))
         .route("/api/support", post(support_handler))
         .layer(Extension(rate_limit_state))
         .layer(Extension(Arc::new(shared_state)))

@@ -9,7 +9,7 @@ import { useAuth } from "../contexts/AuthContext";
 export default function Header() {
   const pathname = usePathname();
   const router = useRouter();
-  const { isLoggedIn, logout } = useAuth();
+  const { isLoggedIn, user, logout } = useAuth();
 
   const isActive = (href: string) => pathname?.startsWith(href);
   const navLinkClass = (href: string) =>
@@ -31,6 +31,10 @@ export default function Header() {
       window.location.href = "/";
     }
   };
+
+  const profileSrc = user?.profile_picture && user.profile_picture.trim() !== ""
+    ? user.profile_picture
+    : "/globe.svg";
 
   return (
     <header className="bg-white shadow-sm">
@@ -64,9 +68,19 @@ export default function Header() {
 
         <div className="flex justify-end">
           {isLoggedIn ? (
-            <button onClick={handleLogout} className={loginButtonClass}>
-              Se déconnecter
-            </button>
+            <div className="flex items-center gap-3">
+              <Link
+                href="/profile"
+                className="w-10 h-10 rounded-full border border-gray-200 overflow-hidden flex items-center justify-center bg-gray-100 hover:opacity-90 transition"
+                aria-label="Voir mon profil"
+                title="Profil"
+              >
+                <img src={profileSrc} alt="Photo de profil" className="w-full h-full object-cover" />
+              </Link>
+              <button onClick={handleLogout} className={loginButtonClass}>
+                Se déconnecter
+              </button>
+            </div>
           ) : (
             <Link href="/login" className={loginButtonClass}>
               Se connecter
