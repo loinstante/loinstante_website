@@ -3,111 +3,26 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
-  --primary: #3b82f6;
-  --secondary: #f59e0b;
-  --heading-dark: #111827;
-  --text-muted: #374151;
-  --text-placeholder: #9CA3AF;
-  --page-hero-bg: #f9fafb;
-  --form-text: #1f2937; /* gris foncé pour les textes des formulaires */
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --color-primary: var(--primary);
-  --color-secondary: var(--secondary);
-  --font-sans: var(--font-geist-sans, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial);
-  --font-mono: var(--font-geist-mono, ui-monospace, SFMono-Regular, Menlo, Monaco, "Roboto Mono", monospace);
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, "Roboto Mono", "Segoe UI Mono", "Courier New", monospace;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
-    --foreground: #e5e7eb;
-    /* Keep page hero background light to match the site's DA */
-    --page-hero-bg: #f9fafb;
+    --foreground: #ededed;
   }
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-sans), sans-serif;
+  font-family: var(--font-sans);
 }
 
-/* Theme utility classes */
-.brand-title {
-  color: var(--heading-dark) !important;
-  font-family: var(--font-sans), sans-serif;
-  line-height: 1.05;
-  opacity: 1 !important;
-}
-
-.brand-title * {
-  color: inherit !important;
-  opacity: 1 !important;
-}
-
-.brand-subtitle {
-  color: var(--text-muted) !important;
-  opacity: 1 !important;
-  font-family: var(--font-sans), sans-serif;
-}
-
-.brand-accent {
-  color: var(--color-primary) !important;
-}
-
-/* Text color utilities */
-.text-primary {
-  color: var(--color-primary) !important;
-}
-
-.text-foreground {
-  color: var(--color-foreground) !important;
-}
-
-.text-heading-dark {
-  color: var(--heading-dark) !important;
-}
-
-.text-text-muted {
-  color: var(--text-muted) !important;
-}
-
-.text-form {
-  color: var(--form-text) !important;
-}
-
-.bg-page-hero-bg {
-  background-color: var(--page-hero-bg) !important;
-}
-
-/* Form elements */
-input,
-textarea,
-select {
-  color: var(--color-foreground) !important;
-}
-
-input::placeholder,
-textarea::placeholder {
-  color: var(--text-placeholder) !important;
-}
-
-/* Animations */
-@keyframes fade-in {
-  from {
-    opacity: 0;
-    transform: translateY(8px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.animate-fade-in {
-  animation: fade-in 0.4s ease-out;
-}
+h1 { font-size: 45px;}
