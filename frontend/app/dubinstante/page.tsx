@@ -37,11 +37,20 @@ export default function DubInstantePage() {
           <div className="grid gap-12 lg:grid-cols-[1.1fr_1fr] lg:items-center">
             {/* Content */}
             <div className="space-y-8">
-              <div className="inline-flex items-center gap-3 rounded-full bg-slate-100 px-4 py-1.5 border border-slate-200 w-fit">
-                <span className="flex h-2 w-2 rounded-full bg-violet-600 animate-pulse"></span>
-                <p className="text-xs font-bold uppercase tracking-widest text-slate-600">
-                  v0.11.0 — Open Source & Local
-                </p>
+              <div className="flex items-center gap-3">
+                <div className="inline-flex items-center gap-3 rounded-full bg-slate-100 px-4 py-1.5 border border-slate-200 w-fit">
+                  <span className="flex h-2 w-2 rounded-full bg-violet-600 animate-pulse"></span>
+                  <p className="text-xs font-bold uppercase tracking-widest text-slate-600">
+                    v0.11.0 — Open Source & Local
+                  </p>
+                </div>
+
+                <div className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-amber-50 to-yellow-50 px-3 py-2 border border-amber-200 shadow-sm">
+                  <span className="text-amber-600 text-lg">⭐</span>
+                  <p className="text-xs font-bold uppercase tracking-widest text-amber-700">
+                    Projet principal
+                  </p>
+                </div>
               </div>
 
               <div className="space-y-4">
@@ -49,14 +58,16 @@ export default function DubInstantePage() {
                   Dub<span className="text-violet-600">Instante</span>
                 </h1>
                 <p className="text-2xl md:text-3xl font-bold text-slate-800 tracking-tight">
-                  Station de travail pour le doublage.
+                  Logiciel de doublage vidéo professionnel conçu pour les workflows audio et post-production exigeants.
+
+Accessible aux débutants, tout en offrant la précision et la performance attendues par les professionnels.
                 </p>
               </div>
 
               <p className="text-xl text-slate-600 leading-relaxed max-w-xl font-medium">
-                Une solution de post-synchronisation conçue pour la précision.
-                Importez vos médias, synchronisez vos dialogues sur bandes
-                rythmo et enregistrez vos pistes audio nativement.
+                Optimisé pour studios et flux de post‑production : import 4K,
+                synchronisation frame‑par‑frame, enregistrement multi‑mic pro et
+                export natif via FFmpeg.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-5 pt-2">
@@ -74,7 +85,7 @@ export default function DubInstantePage() {
                   rel="noopener noreferrer"
                   className="inline-flex items-center justify-center px-10 py-5 bg-white hover:bg-slate-50 text-slate-900 font-bold rounded-2xl transition-all duration-300 border border-slate-200"
                 >
-                  Essayer la version web
+                  Découvrir sur le site
                 </a>
               </div>
 
@@ -182,6 +193,35 @@ export default function DubInstantePage() {
                   </div>
                 </div>
               </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Pour qui */}
+      <section className="bg-white border-t border-slate-100">
+        <div className="container-max px-6 py-12 md:py-16">
+          <div className="mb-8 text-center max-w-2xl mx-auto">
+            <h3 className="text-sm font-semibold uppercase tracking-[0.24em] text-blue-600 mb-4">
+              🎬 Pour qui est DubInstante ?
+            </h3>
+            <p className="text-base text-slate-600">Un outil qui s’adapte à ton niveau.</p>
+          </div>
+
+          <div className="grid gap-6 md:grid-cols-3">
+            <div className="p-6 rounded-2xl border border-slate-100 bg-slate-50 text-center">
+              <h4 className="text-lg font-bold text-slate-900 mb-2">Débutants</h4>
+              <p className="text-sm text-slate-600">Doublez vos vidéos facilement sans outils complexes.</p>
+            </div>
+
+            <div className="p-6 rounded-2xl border border-slate-100 bg-white text-center shadow-sm">
+              <h4 className="text-lg font-bold text-slate-900 mb-2">Créateurs</h4>
+              <p className="text-sm text-slate-600">Gagnez du temps sur vos projets vidéo avec un workflow rapide et précis.</p>
+            </div>
+
+            <div className="p-6 rounded-2xl border border-slate-100 bg-white text-center">
+              <h4 className="text-lg font-bold text-slate-900 mb-2">Professionnels</h4>
+              <p className="text-sm text-slate-600">Travaillez avec des outils adaptés à la post-production audio et vidéo exigeante.</p>
             </div>
           </div>
         </div>
