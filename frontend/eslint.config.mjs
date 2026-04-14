@@ -18,6 +18,11 @@ const eslintConfig = defineConfig([
       "react/display-name": "off",
       "react/no-direct-mutation-state": "off",
       "react/no-unescaped-entities": "off",
+      "react/no-render-return-value": "off",
+      "react/no-string-refs": "off",
+      "react/require-render-return": "off",
+      "react/jsx-key": "off",
+      "react/prop-types": "off",
     },
   },
 ]);

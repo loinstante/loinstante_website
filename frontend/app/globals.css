@@ -1,28 +1,147 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap');
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #f8fafc;
+  --foreground: #0f172a; /* slate-900 */
+  --muted: #6b7280; /* gray-500 */
+  --header-bg: #e8cee988; /* light neutral header */
+  --panel-bg: #ffffff;
+  --panel-border: rgba(2,6,23,0.06);
+  --accent: #0ea5e9; /* subtle blue accent */
+  --radius: 10px;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif;
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif;
   --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, "Roboto Mono", "Segoe UI Mono", "Courier New", monospace;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
+/* Base */
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-h1 { font-size: 45px;}
+/* Typography tweaks (let Tailwind handle responsive sizes) */
+h1 { font-weight: 800; }
+p { color: var(--muted); }
+
+/* Header styles: 25% blue | 50% white (center) | 25% red */
+.site-header {
+  background: linear-gradient(
+    90deg,
+    #0055A4 0% 25%,
+    #ffffff 25% 75%,
+    #EF4135 75% 100%
+  );
+}
+
+.site-header-panel {
+  margin-top: 0.55em;
+  margin-bottom: 0.55em;
+  background: var(--panel-bg);
+  border: 1px solid var(--panel-border);
+  box-shadow: 0 10px 24px rgba(2,6,23,0.06);
+  border-bottom-left-radius: var(--radius);
+  border-bottom-right-radius: var(--radius);
+  border-top-left-radius: var(--radius);
+  border-top-right-radius: var(--radius);
+}
+
+.site-title {
+  color: var(--foreground);
+  letter-spacing: -0.02em;
+}
+
+.site-tagline {
+  color: var(--muted);
+  font-weight: 500;
+}
+
+.lang-badge {
+  background: rgba(15,23,42,0.03);
+  border: 1px solid rgba(2,6,23,0.06);
+  color: var(--foreground);
+}
+
+.flag svg { display: block; }
+
+/* Utility: keep header content constrained */
+.container-max { max-width: 1120px; width: 100%; margin-left: auto; margin-right: auto; }
+
+/* French flag hover — semi-opaque overlay (80% opacity) */
+.french-flag-hover {
+  background-repeat: no-repeat;
+  background-size: cover;
+  transition: background 180ms ease, color 180ms ease, transform 180ms ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.french-flag-hover:hover,
+.french-flag-hover:focus-visible {
+  background-image: linear-gradient(
+    90deg,
+    rgba(0, 85, 164, 0.8) 0% 33.333%,
+    rgba(255, 255, 255, 0.8) 33.333% 66.666%,
+    rgba(239, 65, 53, 0.8) 66.666% 100%
+  );
+  color: var(--foreground);
+  transform: translateY(-1px);
+}
+
+.site-nav {
+  background: rgba(255, 255, 255, 0.92);
+}
+
+.nav-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 46px;
+  padding: 0.9rem 1rem;
+  border-radius: 9999px;
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  background: #ffffff;
+  color: #475569;
+  text-decoration: none;
+  transition: background 180ms ease, color 180ms ease, transform 180ms ease, border-color 180ms ease;
+}
+
+.nav-pill:hover,
+.nav-pill:focus-visible {
+  background: #eff6ff;
+  color: #0f172a;
+}
+
+.nav-pill--active {
+  background: #f1f5f9;
+  color: #0f172a;
+  font-weight: 700;
+  border-color: rgba(15, 23, 42, 0.12);
+}
+
+.nav-pill--action {
+  background: #0f172a;
+  color: #ffffff;
+  border-color: rgba(15, 23, 42, 0.12);
+}
+
+.hero-panel {
+  background: radial-gradient(circle at top left, rgba(14, 165, 233, 0.14), transparent 36%),
+    radial-gradient(circle at bottom right, rgba(239, 65, 53, 0.14), transparent 28%);
+}
+
+.feature-card {
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  box-shadow: 0 24px 48px rgba(15, 23, 42, 0.05);
+  border-radius: 24px;
+}

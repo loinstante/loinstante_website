@@ -12,8 +12,40 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="h-full antialiased">
-      <body className="min-h-full flex flex-col">{children}</body>
+    <html lang="fr" className="h-full antialiased">
+      <body className="min-h-full flex flex-col">
+        <section className="site-header">
+          <div className="relative site-header-panel container-max px-6 py-4">
+            <div className="flex items-center justify-center gap-4">
+              <h1 className="site-title text-4xl font-extrabold">Loinstante</h1>
+              <p className="site-tagline whitespace-nowrap">- La suite pour propulser votre créativité, made in France</p>
+            </div>
+          </div>
+        </section>
+        <nav role="navigation" aria-label="Primary Navigation" className="site-nav bg-white/80 backdrop-blur-sm border-t border-gray-200">
+          <div className="container-max">
+            <ul className="flex items-stretch justify-between gap-3 py-3 w-full">
+              <li className="flex-1 flex">
+                <a href="/" className="flex items-center justify-center w-full px-3 py-2 rounded-full text-sm font-medium bg-gray-50 text-gray-600 french-flag-hover hover:text-gray-900 transition text-center">acceuil</a>
+              </li>
+              <li className="flex-1 flex">
+                <a href="/dubinstante" className="flex items-center justify-center w-full px-3 py-2 rounded-full text-sm font-medium bg-gray-50 text-gray-600 french-flag-hover hover:text-gray-900 transition text-center">DubInstante</a>
+              </li>
+              <li className="flex-1 flex">
+                <a href="#" className="flex items-center justify-center w-full px-3 py-2 rounded-full text-sm font-medium bg-gray-50 text-gray-600 french-flag-hover hover:text-gray-900 transition text-center">suite instante</a>
+              </li>
+              <li className="flex-1 flex">
+                <a href="#" className="flex items-center justify-center w-full px-3 py-2 rounded-full text-sm font-medium bg-gray-50 text-gray-600 french-flag-hover hover:text-gray-900 transition text-center">Instantechate</a>
+              </li>
+              <li className="flex-1 flex">
+                <a href="#" className="flex items-center justify-center w-full px-4 py-2 rounded-full text-sm font-semibold text-white bg-indigo-600 hover:bg-indigo-700 transition text-center">login/register</a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+        <hr className="border-gray-200" />
+        {children}
+      </body>
     </html>
   );
 }
